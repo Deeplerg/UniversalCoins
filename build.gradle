@@ -16,7 +16,7 @@ def mcmodInfoFile = file('src/main/resources/mcmod.info')
 // Safely fallback just in case the folder structure isn't nested yet
 if (!mcmodInfoFile.exists()) mcmodInfoFile = file('resources/mcmod.info')
 
-def modVersion = '0.0.1'
+def modVersion = '0.0.2'
 if (mcmodInfoFile.exists()) {
     def mcmodInfo = new JsonSlurper().parseText(mcmodInfoFile.getText('UTF-8'))
     def parsedVersion = (mcmodInfo instanceof List ? mcmodInfo[0].version : mcmodInfo.version)
