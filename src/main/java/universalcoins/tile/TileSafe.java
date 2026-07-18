@@ -147,19 +147,19 @@ public class TileSafe extends TileEntity implements IInventory, ISidedInventory 
 	}
 
 	public void fillOutputSlot() {
-		if (accountBalance > UniversalCoins.coinValues[4]) {
+		if (accountBalance >= UniversalCoins.coinValues[4]) {
 			inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.obsidian_coin);
 			inventory[itemOutputSlot].stackSize = (int) Math.min(accountBalance / UniversalCoins.coinValues[4], 64);
-		} else if (accountBalance > UniversalCoins.coinValues[3]) {
+		} else if (accountBalance >= UniversalCoins.coinValues[3]) {
 			inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.diamond_coin);
 			inventory[itemOutputSlot].stackSize = (int) Math.min(accountBalance / UniversalCoins.coinValues[3], 64);
-		} else if (accountBalance > UniversalCoins.coinValues[2]) {
+		} else if (accountBalance >= UniversalCoins.coinValues[2]) {
 			inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.emerald_coin);
 			inventory[itemOutputSlot].stackSize = (int) Math.min(accountBalance / UniversalCoins.coinValues[2], 64);
-		} else if (accountBalance > UniversalCoins.coinValues[1]) {
+		} else if (accountBalance >= UniversalCoins.coinValues[1]) {
 			inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.gold_coin);
 			inventory[itemOutputSlot].stackSize = (int) Math.min(accountBalance / UniversalCoins.coinValues[1], 64);
-		} else if (accountBalance > UniversalCoins.coinValues[0]) {
+		} else if (accountBalance >= UniversalCoins.coinValues[0]) {
 			inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.iron_coin);
 			inventory[itemOutputSlot].stackSize = (int) Math.min(accountBalance / UniversalCoins.coinValues[0], 64);
 		}

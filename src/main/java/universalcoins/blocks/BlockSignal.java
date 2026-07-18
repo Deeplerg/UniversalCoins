@@ -105,19 +105,19 @@ public class BlockSignal extends BlockContainer {
 			// return excess coins
 			ItemStack stack = null;
 			while (coinsFound > 0) {
-				if (coinsFound > UniversalCoins.coinValues[4]) {
+				if (coinsFound >= UniversalCoins.coinValues[4]) {
 					stack = new ItemStack(UniversalCoins.proxy.obsidian_coin, 1);
 					stack.stackSize = (int) Math.floor(coinsFound / UniversalCoins.coinValues[4]);
 					coinsFound -= stack.stackSize * UniversalCoins.coinValues[4];
-				} else if (coinsFound > UniversalCoins.coinValues[3]) {
+				} else if (coinsFound >= UniversalCoins.coinValues[3]) {
 					stack = new ItemStack(UniversalCoins.proxy.diamond_coin, 1);
 					stack.stackSize = (int) Math.floor(coinsFound / UniversalCoins.coinValues[3]);
 					coinsFound -= stack.stackSize * UniversalCoins.coinValues[3];
-				} else if (coinsFound > UniversalCoins.coinValues[2]) {
+				} else if (coinsFound >= UniversalCoins.coinValues[2]) {
 					stack = new ItemStack(UniversalCoins.proxy.emerald_coin, 1);
 					stack.stackSize = (int) Math.floor(coinsFound / UniversalCoins.coinValues[2]);
 					coinsFound -= stack.stackSize * UniversalCoins.coinValues[2];
-				} else if (coinsFound > UniversalCoins.coinValues[1]) {
+				} else if (coinsFound >= UniversalCoins.coinValues[1]) {
 					stack = new ItemStack(UniversalCoins.proxy.gold_coin, 1);
 					stack.stackSize = (int) Math.floor(coinsFound / UniversalCoins.coinValues[1]);
 					coinsFound -= stack.stackSize * UniversalCoins.coinValues[1];

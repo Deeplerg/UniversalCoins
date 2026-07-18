@@ -74,19 +74,19 @@ public class UCGive extends CommandBase {
 	private void givePlayerCoins(EntityPlayer recipient, int coinsLeft) {
 		ItemStack stack = null;
 		while (coinsLeft > 0) {
-			if (coinsLeft > UniversalCoins.coinValues[4]) {
+			if (coinsLeft >= UniversalCoins.coinValues[4]) {
 				stack = new ItemStack(UniversalCoins.proxy.obsidian_coin, 1);
 				stack.stackSize = (int) Math.floor(coinsLeft / UniversalCoins.coinValues[4]);
 				coinsLeft -= stack.stackSize * UniversalCoins.coinValues[4];
-			} else if (coinsLeft > UniversalCoins.coinValues[3]) {
+			} else if (coinsLeft >= UniversalCoins.coinValues[3]) {
 				stack = new ItemStack(UniversalCoins.proxy.diamond_coin, 1);
 				stack.stackSize = (int) Math.floor(coinsLeft / UniversalCoins.coinValues[3]);
 				coinsLeft -= stack.stackSize * UniversalCoins.coinValues[3];
-			} else if (coinsLeft > UniversalCoins.coinValues[2]) {
+			} else if (coinsLeft >= UniversalCoins.coinValues[2]) {
 				stack = new ItemStack(UniversalCoins.proxy.emerald_coin, 1);
 				stack.stackSize = (int) Math.floor(coinsLeft / UniversalCoins.coinValues[2]);
 				coinsLeft -= stack.stackSize * UniversalCoins.coinValues[2];
-			} else if (coinsLeft > UniversalCoins.coinValues[1]) {
+			} else if (coinsLeft >= UniversalCoins.coinValues[1]) {
 				stack = new ItemStack(UniversalCoins.proxy.gold_coin, 1);
 				stack.stackSize = (int) Math.floor(coinsLeft / UniversalCoins.coinValues[1]);
 				coinsLeft -= stack.stackSize * UniversalCoins.coinValues[1];

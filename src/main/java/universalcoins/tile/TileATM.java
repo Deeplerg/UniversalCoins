@@ -355,27 +355,27 @@ public class TileATM extends TileEntity implements IInventory, ISidedInventory {
 
 	public void fillCoinSlot() {
 		if (inventory[itemCoinSlot] == null && coinWithdrawalAmount > 0) {
-			if (coinWithdrawalAmount > UniversalCoins.coinValues[4]) {
+			if (coinWithdrawalAmount >= UniversalCoins.coinValues[4]) {
 				inventory[itemCoinSlot] = new ItemStack(UniversalCoins.proxy.obsidian_coin);
 				inventory[itemCoinSlot].stackSize = (int) Math.min(coinWithdrawalAmount / UniversalCoins.coinValues[4],
 						64);
 				coinWithdrawalAmount -= inventory[itemCoinSlot].stackSize * UniversalCoins.coinValues[4];
-			} else if (coinWithdrawalAmount > UniversalCoins.coinValues[3]) {
+			} else if (coinWithdrawalAmount >= UniversalCoins.coinValues[3]) {
 				inventory[itemCoinSlot] = new ItemStack(UniversalCoins.proxy.diamond_coin);
 				inventory[itemCoinSlot].stackSize = (int) Math.min(coinWithdrawalAmount / UniversalCoins.coinValues[3],
 						64);
 				coinWithdrawalAmount -= inventory[itemCoinSlot].stackSize * UniversalCoins.coinValues[3];
-			} else if (coinWithdrawalAmount > UniversalCoins.coinValues[2]) {
+			} else if (coinWithdrawalAmount >= UniversalCoins.coinValues[2]) {
 				inventory[itemCoinSlot] = new ItemStack(UniversalCoins.proxy.emerald_coin);
 				inventory[itemCoinSlot].stackSize = (int) Math.min(coinWithdrawalAmount / UniversalCoins.coinValues[2],
 						64);
 				coinWithdrawalAmount -= inventory[itemCoinSlot].stackSize * UniversalCoins.coinValues[2];
-			} else if (coinWithdrawalAmount > UniversalCoins.coinValues[1]) {
+			} else if (coinWithdrawalAmount >= UniversalCoins.coinValues[1]) {
 				inventory[itemCoinSlot] = new ItemStack(UniversalCoins.proxy.gold_coin);
 				inventory[itemCoinSlot].stackSize = (int) Math.min(coinWithdrawalAmount / UniversalCoins.coinValues[1],
 						64);
 				coinWithdrawalAmount -= inventory[itemCoinSlot].stackSize * UniversalCoins.coinValues[1];
-			} else if (coinWithdrawalAmount > UniversalCoins.coinValues[0]) {
+			} else if (coinWithdrawalAmount >= UniversalCoins.coinValues[0]) {
 				inventory[itemCoinSlot] = new ItemStack(UniversalCoins.proxy.iron_coin);
 				inventory[itemCoinSlot].stackSize = (int) Math.min(coinWithdrawalAmount / UniversalCoins.coinValues[0],
 						64);

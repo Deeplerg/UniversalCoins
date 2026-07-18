@@ -286,23 +286,23 @@ public class TilePowerReceiver extends TileEntity implements IInventory, IEnergy
 
 	public void fillOutputSlot() {
 		if (inventory[itemOutputSlot] == null && coinSum > 0) {
-			if (coinSum > UniversalCoins.coinValues[4]) {
+			if (coinSum >= UniversalCoins.coinValues[4]) {
 				inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.obsidian_coin);
 				inventory[itemOutputSlot].stackSize = (int) Math.min(coinSum / UniversalCoins.coinValues[4], 64);
 				coinSum -= inventory[itemOutputSlot].stackSize * UniversalCoins.coinValues[4];
-			} else if (coinSum > UniversalCoins.coinValues[3]) {
+			} else if (coinSum >= UniversalCoins.coinValues[3]) {
 				inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.diamond_coin);
 				inventory[itemOutputSlot].stackSize = (int) Math.min(coinSum / UniversalCoins.coinValues[3], 64);
 				coinSum -= inventory[itemOutputSlot].stackSize * UniversalCoins.coinValues[3];
-			} else if (coinSum > UniversalCoins.coinValues[2]) {
+			} else if (coinSum >= UniversalCoins.coinValues[2]) {
 				inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.emerald_coin);
 				inventory[itemOutputSlot].stackSize = (int) Math.min(coinSum / UniversalCoins.coinValues[2], 64);
 				coinSum -= inventory[itemOutputSlot].stackSize * UniversalCoins.coinValues[2];
-			} else if (coinSum > UniversalCoins.coinValues[1]) {
+			} else if (coinSum >= UniversalCoins.coinValues[1]) {
 				inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.gold_coin);
 				inventory[itemOutputSlot].stackSize = (int) Math.min(coinSum / UniversalCoins.coinValues[1], 64);
 				coinSum -= inventory[itemOutputSlot].stackSize * UniversalCoins.coinValues[1];
-			} else if (coinSum > UniversalCoins.coinValues[0]) {
+			} else if (coinSum >= UniversalCoins.coinValues[0]) {
 				inventory[itemOutputSlot] = new ItemStack(UniversalCoins.proxy.iron_coin);
 				inventory[itemOutputSlot].stackSize = (int) Math.min(coinSum / UniversalCoins.coinValues[0], 64);
 				coinSum -= inventory[itemOutputSlot].stackSize * UniversalCoins.coinValues[0];

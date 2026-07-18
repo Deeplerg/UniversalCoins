@@ -39,23 +39,23 @@ public class UCMobDropEventHandler {
 					|| event.entity instanceof EntityDragon) && !event.entity.worldObj.isRemote && chance == 0) {
 				while (dropped > 0) {
 					ItemStack stack = null;
-					if (dropped > UniversalCoins.coinValues[4]) {
+					if (dropped >= UniversalCoins.coinValues[4]) {
 						stack = new ItemStack(UniversalCoins.proxy.obsidian_coin, 1);
 						stack.stackSize = (int) Math.floor(dropped / UniversalCoins.coinValues[4]);
 						dropped -= stack.stackSize * UniversalCoins.coinValues[4];
-					} else if (dropped > UniversalCoins.coinValues[3]) {
+					} else if (dropped >= UniversalCoins.coinValues[3]) {
 						stack = new ItemStack(UniversalCoins.proxy.diamond_coin, 1);
 						stack.stackSize = (int) Math.floor(dropped / UniversalCoins.coinValues[3]);
 						dropped -= stack.stackSize * UniversalCoins.coinValues[3];
-					} else if (dropped > UniversalCoins.coinValues[2]) {
+					} else if (dropped >= UniversalCoins.coinValues[2]) {
 						stack = new ItemStack(UniversalCoins.proxy.emerald_coin, 1);
 						stack.stackSize = (int) Math.floor(dropped / UniversalCoins.coinValues[2]);
 						dropped -= stack.stackSize * UniversalCoins.coinValues[2];
-					} else if (dropped > UniversalCoins.coinValues[1]) {
+					} else if (dropped >= UniversalCoins.coinValues[1]) {
 						stack = new ItemStack(UniversalCoins.proxy.gold_coin, 1);
 						stack.stackSize = (int) Math.floor(dropped / UniversalCoins.coinValues[1]);
 						dropped -= stack.stackSize * UniversalCoins.coinValues[1];
-					} else if (dropped > UniversalCoins.coinValues[0]) {
+					} else if (dropped >= UniversalCoins.coinValues[0]) {
 						stack = new ItemStack(UniversalCoins.proxy.iron_coin, 1);
 						stack.stackSize = (int) Math.floor(dropped / UniversalCoins.coinValues[0]);
 						dropped -= stack.stackSize * UniversalCoins.coinValues[0];
