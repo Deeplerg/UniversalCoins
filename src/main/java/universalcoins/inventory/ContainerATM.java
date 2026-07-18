@@ -65,8 +65,6 @@ public class ContainerATM extends Container {
 			if (slot < 2) {
 				if (!this.mergeItemStack(stackInSlot, 2, 38, true)) {
 					return null;
-				} else {
-					tEntity.fillCoinSlot();
 				}
 			}
 			// places it into the tileEntity if possible since its in the player
@@ -95,6 +93,10 @@ public class ContainerATM extends Container {
 				return null;
 			}
 			slotObject.onPickupFromSlot(player, stackInSlot);
+
+			if (slot == TileATM.itemCoinSlot) {
+				tEntity.fillCoinSlot();
+			}
 		}
 
 		return stack;

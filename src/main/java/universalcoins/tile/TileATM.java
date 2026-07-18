@@ -36,11 +36,17 @@ public class TileATM extends TileEntity implements IInventory, ISidedInventory {
 	public void inUseCleanup() {
 		if (worldObj.isRemote)
 			return;
+
+		if (coinWithdrawalAmount > 0 && !accountNumber.matches("none") && !accountNumber.isEmpty()) {
+			UniversalAccounts.getInstance().creditAccount(accountNumber, coinWithdrawalAmount);
+		}
+
 		inUse = false;
 		withdrawCoins = false;
 		depositCoins = false;
 		accountNumber = "none";
 		accountBalance = 0;
+		coinWithdrawalAmount = 0;
 		updateTE();
 	}
 

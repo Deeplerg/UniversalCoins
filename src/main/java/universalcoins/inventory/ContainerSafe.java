@@ -60,8 +60,6 @@ public class ContainerSafe extends Container {
 			if (slot < 2) {
 				if (!this.mergeItemStack(stackInSlot, 2, 38, true)) {
 					return null;
-				} else {
-					tEntity.coinsTaken(stack);
 				}
 			}
 			// places it into the tileEntity if possible since its in the player
@@ -90,6 +88,10 @@ public class ContainerSafe extends Container {
 				return null;
 			}
 			slotObject.onPickupFromSlot(player, stackInSlot);
+
+			if (slot == TileSafe.itemOutputSlot) {
+				tEntity.coinsTaken(stack);
+			}
 		}
 
 		return stack;
