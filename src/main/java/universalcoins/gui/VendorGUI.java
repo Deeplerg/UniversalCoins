@@ -75,13 +75,17 @@ public class VendorGUI extends GuiContainer {
 		itemPriceField.setEnableBackgroundDrawing(false);
 	}
 
+	@Override
 	protected void keyTyped(char c, int i) {
 		if (itemPriceField.isFocused()) {
-			if (i == 14 || (i > 1 && i < 12)) {
+			if (i == 1) {
+				super.keyTyped(c, i);
+			} else if (i == 14 || i == 211 || i == 203 || i == 205 || Character.isDigit(c)) {
 				itemPriceField.textboxKeyTyped(c, i);
 			}
-		} else
+		} else {
 			super.keyTyped(c, i);
+		}
 	}
 
 	@Override

@@ -39,12 +39,14 @@ public class ATMGUI extends GuiContainer {
 	@Override
 	protected void keyTyped(char c, int i) {
 		if (menuState == 6) {
-			textField.setFocused(true);
-			textField.textboxKeyTyped(c, i);
-			textField.setFocused(false);
-		} else
+			if (i == 1) {
+				super.keyTyped(c, i);
+			} else if (i == 14 || i == 211 || i == 203 || i == 205 || Character.isDigit(c)) {
+				textField.textboxKeyTyped(c, i);
+			}
+		} else {
 			super.keyTyped(c, i);
-
+		}
 	}
 
 	@Override
@@ -141,6 +143,7 @@ public class ATMGUI extends GuiContainer {
 			barProgress++;
 			if (barProgress > 100) {
 				menuState = 6;
+				textField.setFocused(true);
 				barProgress = 0;
 			}
 		}
@@ -227,6 +230,7 @@ public class ATMGUI extends GuiContainer {
 			}
 			if (button.id == idButtonThree) {
 				textField.setText("0");
+				textField.setFocused(true);
 				menuState = 6;
 			}
 			if (button.id == idButtonFour) {
@@ -288,21 +292,28 @@ public class ATMGUI extends GuiContainer {
 				try {
 					coinWithdrawalAmount = Integer.parseInt(textField.getText());
 				} catch (NumberFormatException ex) {
+					textField.setFocused(false);
 					menuState = 12;
+					return;
 				} catch (Throwable ex2) {
+					textField.setFocused(false);
 					menuState = 12;
+					return;
 				}
 				if (coinWithdrawalAmount > tEntity.accountBalance || coinWithdrawalAmount <= 0) {
+					textField.setFocused(false);
 					menuState = 12;
 				} else {
 					// send message to server with withdrawal amount
 					tEntity.sendServerUpdatePacket(coinWithdrawalAmount);
 					functionID = 4;
+					textField.setFocused(false);
 					menuState = 10;
 				}
 			}
 			if (button.id == idButtonFour) {
 				textField.setText("0");
+				textField.setFocused(false);
 				menuState = 2;
 			}
 			break;
