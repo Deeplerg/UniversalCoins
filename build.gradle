@@ -1,36 +1,41 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+import groovy.json.JsonSlurper
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'com.gtnewhorizons.retrofuturagradle' version '2.0.2'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+def mcmodInfoFile = file('src/main/resources/mcmod.info')
+// Safely fallback just in case the folder structure isn't nested yet
+if (!mcmodInfoFile.exists()) mcmodInfoFile = file('resources/mcmod.info')
+
+def modVersion = '1.7.10-1.7.7'
+if (mcmodInfoFile.exists()) {
+    def mcmodInfo = new JsonSlurper().parseText(mcmodInfoFile.getText('UTF-8'))
+    def parsedVersion = (mcmodInfo instanceof List ? mcmodInfo[0].version : mcmodInfo.version)
+    if (parsedVersion != null && parsedVersion != '${version}') {
+        modVersion = parsedVersion
     }
 }
 
-apply plugin: 'forge'
+base.archivesName = "UniversalCoins"
 
-version = "1.7.10-1.7.7"
+version = modVersion
 group= "com.github.notabadminer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "UniversalCoins"
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
 
 minecraft {
-    version = "1.7.10-10.13.4.1614-1.7.10"
-    runDir = "eclipse"
-	
-	// replacing
-    replace "@MC_VERSION@", project.minecraft.version
-    replace "@VERSION@", project.version
-    replaceIn "UniversalCoins.java"
+    mcVersion = "1.7.10" // RFG pulls forge
+
+    // replacing
+    injectedTags.put('VERSION', project.version)
+    injectedTags.put('MC_VERSION', project.minecraft.mcVersion)
 }
 
 dependencies {
@@ -51,16 +56,19 @@ dependencies {
 
 processResources
 {
+    // Required for modern Gradle (7.0+) to prevent failure on duplicate resources
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+    inputs.property "mcversion", project.minecraft.mcVersion
 
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
                 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand 'version':project.version, 'mcversion':project.minecraft.mcVersion
     }
         
     // copy everything else, thats not the mcmod.info

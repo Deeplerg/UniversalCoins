@@ -487,7 +487,7 @@ public class TilePackager extends TileEntity implements IInventory, ISidedInvent
 				player.worldObj.spawnEntityInWorld(entityItem);
 			}
 			player.addChatMessage(
-					new ChatComponentText("ง2" + playerName + StatCollector.translateToLocal("packager.message.sent")));
+					new ChatComponentText("ยง2" + playerName + StatCollector.translateToLocal("packager.message.sent")));
 			inventory[itemPackageInputSlot] = null;
 		}
 	}

@@ -61,16 +61,16 @@ public class UCCommand extends CommandBase {
 				price = UCItemPricer.getInstance().getItemPrice(stack);
 				stackName = getPlayerItem(sender).getDisplayName();
 			} else {
-				sender.addChatMessage(new ChatComponentText("§cError: no item found in hand."));
+				sender.addChatMessage(new ChatComponentText("Â§cError: no item found in hand."));
 				return;
 			}
 			if (price == -1) {
-				sender.addChatMessage(new ChatComponentText("§cNo price set for" + " " + stackName));
+				sender.addChatMessage(new ChatComponentText("Â§cNo price set for" + " " + stackName));
 			} else {
-				sender.addChatMessage(new ChatComponentText("§a" + stackName + " = " + formatter.format(price)));
+				sender.addChatMessage(new ChatComponentText("Â§a" + stackName + " = " + formatter.format(price)));
 				if (stack.isItemStackDamageable()) {
 					int value = price * (stack.getMaxDamage() - stack.getItemDamage()) / stack.getMaxDamage();
-					sender.addChatMessage(new ChatComponentText("§acurrent value = " + formatter.format(value)));
+					sender.addChatMessage(new ChatComponentText("Â§acurrent value = " + formatter.format(value)));
 				}
 			}
 		} else if (astring[0].matches("set")) {
@@ -81,7 +81,7 @@ public class UCCommand extends CommandBase {
 				try {
 					price = Integer.parseInt(astring[1]);
 				} catch (NumberFormatException e) {
-					sender.addChatMessage(new ChatComponentText("§cError: invalid price"));
+					sender.addChatMessage(new ChatComponentText("Â§cError: invalid price"));
 					return;
 				}
 				ItemStack stack = getPlayerItem(sender);
@@ -91,7 +91,7 @@ public class UCCommand extends CommandBase {
 				if (result == true) {
 					sender.addChatMessage(new ChatComponentText("Price set to " + formatter.format(price)));
 				} else {
-					sender.addChatMessage(new ChatComponentText("§cFailed to set price."));
+					sender.addChatMessage(new ChatComponentText("Â§cFailed to set price."));
 				}
 			} else {
 				sender.addChatMessage(new ChatComponentText("Please specify price."));
@@ -99,22 +99,22 @@ public class UCCommand extends CommandBase {
 
 		} else if (astring[0].matches("reload")) {
 			UCItemPricer.getInstance().loadConfigs();
-			sender.addChatMessage(new ChatComponentText("§aAll changes since last save have been reset."));
+			sender.addChatMessage(new ChatComponentText("Â§aAll changes since last save have been reset."));
 		} else if (astring[0].matches("reset")) {
 			if (UCItemPricer.getInstance().resetDefaults()) {
-				sender.addChatMessage(new ChatComponentText("§aPrice defaults reloaded."));
+				sender.addChatMessage(new ChatComponentText("Â§aPrice defaults reloaded."));
 			} else {
-				sender.addChatMessage(new ChatComponentText("§cFailed to load defaults."));
+				sender.addChatMessage(new ChatComponentText("Â§cFailed to load defaults."));
 			}
 		} else if (astring[0].matches("save")) {
 			if (UCItemPricer.getInstance().savePriceLists()) {
-				sender.addChatMessage(new ChatComponentText("§aChanges saved successfully."));
+				sender.addChatMessage(new ChatComponentText("Â§aChanges saved successfully."));
 			} else {
-				sender.addChatMessage(new ChatComponentText("§cFailed to save changes."));
+				sender.addChatMessage(new ChatComponentText("Â§cFailed to save changes."));
 			}
 		} else if (astring[0].matches("update")) {
 			UCItemPricer.getInstance().updatePriceLists();
-			sender.addChatMessage(new ChatComponentText("§aPrices updated."));
+			sender.addChatMessage(new ChatComponentText("Â§aPrices updated."));
 		}
 	}
 

@@ -44,17 +44,17 @@ public class UCGive extends CommandBase {
 			int coinsToSend = 0;
 			if (recipient == null) {
 				sender.addChatMessage(new ChatComponentText(
-						"§c" + StatCollector.translateToLocal("command.givecoins.error.notfound")));
+						"Â§c" + StatCollector.translateToLocal("command.givecoins.error.notfound")));
 			}
 			try {
 				coinsToSend = Integer.parseInt(astring[1]);
 			} catch (NumberFormatException e) {
 				sender.addChatMessage(new ChatComponentText(
-						"§c" + StatCollector.translateToLocal("command.givecoins.error.badentry")));
+						"Â§c" + StatCollector.translateToLocal("command.givecoins.error.badentry")));
 			}
 			if (coinsToSend <= 0) {
 				sender.addChatMessage(
-						new ChatComponentText("§c" + StatCollector.translateToLocal("command.send.error.badentry")));
+						new ChatComponentText("Â§c" + StatCollector.translateToLocal("command.send.error.badentry")));
 				return;
 			}
 			givePlayerCoins(recipient, coinsToSend);
@@ -68,7 +68,7 @@ public class UCGive extends CommandBase {
 									coinsToSend > 1 ? "general.currency.multiple" : "general.currency.single")));
 		} else
 			sender.addChatMessage(
-					new ChatComponentText("§c" + StatCollector.translateToLocal("command.givecoins.error.noname")));
+					new ChatComponentText("Â§c" + StatCollector.translateToLocal("command.givecoins.error.noname")));
 	}
 
 	private void givePlayerCoins(EntityPlayer recipient, int coinsLeft) {
